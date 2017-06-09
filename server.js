@@ -4,7 +4,8 @@ const dotenv = require('dotenv')
 dotenv.load()
 
 // app
-const port = process.env.PORT || 8080
+const serverPort = process.env.OPENSHIFT_NODEJS_PORT || 8080
+const serverIpAddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -24,4 +25,4 @@ app.use((err, req, res, next) => {
   console.log(err)
 })
 
-app.listen(port, console.log('Magic happening on ' + port))
+app.listen(serverPort, serverIpAddress, console.log(`Listening on ${serverIpAddress} port ${serverPort}`))
