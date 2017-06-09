@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "csm tools site",
   "main": "server.js",
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "alex",
   "dependencies": {
@@ -52,5 +56,9 @@
     "sass-loader": "^6.0.5",
     "webpack": "^2.5.1"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jaj1014/csm-tools.git"
+  }
 }
