@@ -2,7 +2,7 @@
   "name": "csm-tools",
   "version": "1.0.0",
   "description": "csm tools site",
-  "main": "server.js",
+  "main": "index.js",
   "engine": {
     "node": "*",
     "npm": "*"

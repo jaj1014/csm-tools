@@ -3,13 +3,6 @@ const _ = require('lodash')
 const json2csv = require('json2csv')
 const buildJSON = require('./build-json.js')
 
-// { campaignName: 'New Campaign',
-//   ad: 'InventoryNumber',
-//   adGroup: 'Classification',
-//   defaultBid: '0.20',
-//   dailyBudget: '20'
-//   file: './uploads/a4ebb9e74ad3db4764fcf03a82deedc9' }
-
 const fields = [
   'Campaign Name',
   'Campaign Daily Budget',
