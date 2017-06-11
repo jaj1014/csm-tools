@@ -1,12 +1,8 @@
 {
   "name": "csm-tools",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "csm tools site",
   "main": "index.js",
-  "engine": {
-    "node": "*",
-    "npm": "*"
-  },
   "scripts": {
     "start": "node server.js"
   },
@@ -28,9 +24,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1",
-    "semantic-ui-css": "^2.2.10",
-    "semantic-ui-react": "^0.68.3"
+    "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.0",
