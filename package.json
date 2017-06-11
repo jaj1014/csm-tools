@@ -36,7 +36,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
     "css-loader": "^0.28.4",
-    "dotenv": "^4.0.0",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-jsx": "^4.0.1",
