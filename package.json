@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "csm tools site",
   "main": "index.js",
+  "scripts": {},
   "author": "alex",
   "dependencies": {
     "axios": "^0.16.1",
