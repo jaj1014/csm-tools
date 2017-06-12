@@ -10,14 +10,14 @@ const deleteFiles = require('../../../utils/delete-files.js')
 router.post('/:action', upload.single('upload'), (req, res) => {
   switch (req.params.action) {
     case 'upload':
-      deleteFiles('../../../../public/downloads')
+      deleteFiles('./public/downloads')
       let jsonData = {}
       jsonData.headers = buildJSON.headersFromFile(`./uploads/${req.file.filename}`)
       jsonData.file = `./uploads/${req.file.filename}`
       res.json(jsonData)
       break
     case 'build':
-      deleteFiles('../../../../uploads')
+      deleteFiles('./uploads')
       res.json(buildCampaign(req.body))
       break
   }
