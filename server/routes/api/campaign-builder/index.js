@@ -17,7 +17,7 @@ router.post('/:action', upload.single('upload'), (req, res) => {
       res.json(jsonData)
       break
     case 'build':
-      // deleteFiles(`${__dirname}./uploads`)
+      deleteFiles(`${__dirname}./uploads`)
       res.json(buildCampaign(req.body))
       break
   }
