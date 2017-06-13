@@ -13,6 +13,14 @@ class Menu extends React.Component {
           title='Product Matching'
           description='Parse product matching files for more actionable data.'
           link='/product-matching' />
+        <MenuItem
+          title='Placeholder'
+          description='Placeholder.'
+          link='/' />
+        <MenuItem
+          title='Placeholder'
+          description='Placeholder.'
+          link='/' />
       </div>
     )
   }

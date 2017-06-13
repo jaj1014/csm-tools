@@ -6,8 +6,6 @@ class ProductMatching extends React.Component {
   constructor (props) {
     super(props)
 
-    this.handleSubmit = this.handleSubmit.bind(this)
-
     this.state = {
       step: 1,
       data: '',
@@ -18,7 +16,7 @@ class ProductMatching extends React.Component {
     let currentStep
     switch (this.state.step) {
       case 1:
-        currentStep = <ProductMatchingUpload handleSubmit={this.handleSubmit} />
+        currentStep = <ProductMatchingUpload />
         break
     }
 
