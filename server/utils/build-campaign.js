@@ -51,7 +51,7 @@ const buildCampaign = (obj) => {
 
 const getCurrentDate = () => {
   let today = new Date()
-  let month = today.getDate() - 1
+  let month = today.getMonth() + 1
   let date = today.getDate()
   let year = today.getFullYear()
 
