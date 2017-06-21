@@ -32,17 +32,6 @@ const buildFile = (file, fileName) => {
   return `/downloads/${fileName}.csv`
 }
 
-// no ideal... need to figure this out...
-// const newLine = (obj) => {
-//   return {
-//     'SKU': obj.sku,
-//     'Title': obj.title,
-//     'Field Name': obj.error.field,
-//     'Merchant Value': obj.error.merchant,
-//     'Amazon Value': obj.error.amazon
-//   }
-// }
-
 const buildMatchingData = (obj) => {
   let file = []
   let fileJSON = jsonFromFile(obj.file)
