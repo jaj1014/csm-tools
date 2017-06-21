@@ -11,13 +11,13 @@ const fields = [
 ]
 
 const buildFile = (file, fileName) => {
-  let file = []
-  let matchingData = buildMatchingData(obj)
-  let fileName = fileName.split('/')[2]
+  let data = []
+  let matchingData = buildMatchingData(file)
+  fileName = fileName.split('/')[2]
 
   matchingData.forEach((item) => {
     item.error.map((err) => {
-      file.push({
+      data.push({
         'SKU': item.sku,
         'Title': item.title,
         'Field Name': err.field,
@@ -27,7 +27,7 @@ const buildFile = (file, fileName) => {
     })
   })
 
-  const newFile = json2csv({data: file, fields: fields})
+  const newFile = json2csv({data: data, fields: fields})
   fs.writeFileSync(`./public/downloads/${fileName}.csv`, newFile)
   return `/downloads/${fileName}.csv`
 }
