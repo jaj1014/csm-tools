@@ -9,10 +9,9 @@ const fields = [
   'Amazon Value'
 ]
 
-const buildFile = (jsonData, fileName) => {
+const buildFile = (jsonData, fileName, cb) => {
   let data = []
   let matchingData = buildMatchingData(jsonData)
-  fileName = fileName.split('/')[2]
 
   matchingData.forEach((item) => {
     item.error.map((err) => {
@@ -28,6 +27,7 @@ const buildFile = (jsonData, fileName) => {
 
   const newFile = json2csv({data: data, fields: fields})
   fs.writeFileSync(`./public/downloads/${fileName}.csv`, newFile)
+  cb()
   return `/downloads/${fileName}.csv`
 }
 
@@ -62,11 +62,10 @@ const getTextFromString = (str) => {
 // creates array of matching error objects
 const separateErrors = (arr) => {
   return arr.map(item => {
-    console.log('HERE', item)
     return {
-      field: item.match(/\((.*?)\s/)[0].split('\'')[1],
-      merchant: item.match(/:(.*?)\//)[0].split('\'')[1],
-      amazon: item.match(/\/(.*)/)[0].split(':')[1].split('\'')[1].trim()
+      field: item.match(/\((.*?)\s/) ? item.match(/\((.*?)\s/)[0].split('\'')[1] : 'skipped',
+      merchant: item.match(/:(.*?)\//) ? item.match(/:(.*?)\//)[0].split('\'')[1] : 'skipped',
+      amazon: item.match(/\/(.*)/) ? item.match(/\/(.*)/)[0].split(':')[1].split('\'')[1].trim() : 'skipped'
     }
   })
 }

@@ -11,9 +11,9 @@ router.post('/upload', upload.single('upload'), (req, res) => {
   deleteFiles('./public/downloads')
 
   let jsonData = buildJSON.fileToJSON(`./uploads/${req.file.filename}`)
-  res.json(parseMatchingErrors(jsonData, req.file.filename))
-
-  deleteFiles('./uploads')
+  res.json(parseMatchingErrors(jsonData, req.file.filename, () => {
+    deleteFiles('./uploads')
+  }))
 })
 
 module.exports = router
