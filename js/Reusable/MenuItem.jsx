@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const MenuItem = (props) => {
   return (
-    <div className='large-3 column'>
+    <div className='large-3 column end'>
       <div className='card'>
         <div className='card-divider'>
           <h5>{props.title}</h5>

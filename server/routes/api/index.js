@@ -4,6 +4,6 @@ const campaignBuilder = require('./campaign-builder/')
 const productMatching = require('./product-matching/')
 
 router.use('/campaign-builder', campaignBuilder)
-router.use('/product-matcing', productMatching)
+router.use('/product-matching', productMatching)
 
 module.exports = router

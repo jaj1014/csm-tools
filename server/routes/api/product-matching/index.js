@@ -3,16 +3,17 @@ const router = express.Router()
 const multer = require('multer')
 const upload = multer({dest: './uploads'})
 
+const buildJSON = require('../../../utils/build-json.js')
 const parseMatchingErrors = require('../../../utils/parse-matching-errors.js').buildFile
 const deleteFiles = require('../../../utils/delete-files.js')
 
-router.post('/:action', upload.single('upload'), (req, res) => {
-  switch (req.params.action) {
-    case 'upload':
-      deleteFiles('./public/downloads')
-      res.json(parseMatchingErrors(req.file, req.file.filename))
-      break
-  }
+router.post('/upload', upload.single('upload'), (req, res) => {
+  deleteFiles('./public/downloads')
+
+  let jsonData = buildJSON.fileToJSON(`./uploads/${req.file.filename}`)
+  res.json(parseMatchingErrors(jsonData, req.file.filename))
+
+  deleteFiles('./uploads')
 })
 
 module.exports = router

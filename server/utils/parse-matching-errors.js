@@ -1,6 +1,5 @@
 const fs = require('fs')
 const json2csv = require('json2csv')
-const buildJSON = require('./build-json.js')
 
 const fields = [
   'SKU',
@@ -10,9 +9,9 @@ const fields = [
   'Amazon Value'
 ]
 
-const buildFile = (file, fileName) => {
+const buildFile = (jsonData, fileName) => {
   let data = []
-  let matchingData = buildMatchingData(file)
+  let matchingData = buildMatchingData(jsonData)
   fileName = fileName.split('/')[2]
 
   matchingData.forEach((item) => {
@@ -32,11 +31,11 @@ const buildFile = (file, fileName) => {
   return `/downloads/${fileName}.csv`
 }
 
-const buildMatchingData = (obj) => {
+const buildMatchingData = (jsonData) => {
   let file = []
-  let fileJSON = jsonFromFile(obj.file)
+  jsonData.shift()
 
-  file = fileJSON.map((row) => {
+  file = jsonData.map((row) => {
     return matchingErrorData(row)
   })
 
@@ -45,7 +44,7 @@ const buildMatchingData = (obj) => {
 
 const matchingErrorData = (row) => {
   let skuError = {}
-  let errorStr = getTextFromString(row['Error Details'])
+  let errorStr = getTextFromString(row['ErrorDetails'])
 
   skuError.sku = row['SKU']
   skuError.title = row['Title']
@@ -56,27 +55,20 @@ const matchingErrorData = (row) => {
 
 const getTextFromString = (str) => {
   return str.match(/[^\]]*$/)[0]
-     .split(',')
+     .split('),')
      .filter(item => item !== '' ? item.trim() : '')
 }
 
 // creates array of matching error objects
 const separateErrors = (arr) => {
   return arr.map(item => {
+    console.log('HERE', item)
     return {
       field: item.match(/\((.*?)\s/)[0].split('\'')[1],
       merchant: item.match(/:(.*?)\//)[0].split('\'')[1],
-      amazon: item.match(/\/(.*?)\)/)[0].split(':')[1].split('\'')[1].trim()
+      amazon: item.match(/\/(.*)/)[0].split(':')[1].split('\'')[1].trim()
     }
   })
-}
-
-const jsonFromFile = (filePath) => {
-  let lines = buildJSON.parseFile(filePath)
-  let headers = buildJSON.getHeaders(lines)
-  let fileJSON = buildJSON.compileJSON(lines, headers)
-
-  return fileJSON
 }
 
 module.exports = {
