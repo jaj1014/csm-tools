@@ -9,6 +9,10 @@ class Menu extends React.Component {
           title='Campaign Builder'
           description='Build sponsored products campaigns from inventory files.'
           link='/campaign-builder' />
+        <MenuItem
+          title='Product Matching'
+          description='Parse product matching files for more actionable data.'
+          link='/product-matching' />
       </div>
     )
   }

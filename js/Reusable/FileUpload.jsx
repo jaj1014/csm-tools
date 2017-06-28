@@ -20,8 +20,8 @@ const handleUpload = (event, props) => {
 const FileUpload = (props, context) => {
   return (
     <div className='callout'>
-      <h5>Upload a file to start your campaign</h5>
-      <p>Use the 'Select File' button below to start building your campaign. Make sure your file includes a SKU field and all fields you plan to use for organizing your campaign.</p>
+      <h5>{props.title}</h5>
+      <p>{props.description}</p>
       <form onSubmit={(e) => handleUpload(e, props)}>
         <label htmlFor='fileUpload' className='button secondary'>Select File</label>
         <input type='file' id='fileUpload' name='upload' className='show-for-sr' />
