@@ -7900,13 +7900,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var DownloadButton = function DownloadButton(props) {
   return _react2.default.createElement(
-    'form',
-    { method: 'get', action: props.path },
-    _react2.default.createElement(
-      'button',
-      { type: 'submit', className: 'button' },
-      'Download Campaign'
-    )
+    'a',
+    { className: 'button', href: props.path, download: true },
+    'Download File'
   );
 };
 
@@ -12161,7 +12157,7 @@ var ProductMatchingUpload = function ProductMatchingUpload(props) {
     actionUrl: '/api/product-matching/upload',
     handleSubmit: props.handleSubmit,
     title: 'Select a file to upload',
-    description: 'Make sure your tile is in .txt format and that it has all columns labeled. Some files leave out an ASIN column. Shift column headers to the right to insert a column named "ASIN".'
+    description: 'Make sure your file is in .txt format and that it has all columns labeled. Some files leave out an ASIN column. Shift column headers to the right to insert a column named "ASIN".'
   });
 };
 

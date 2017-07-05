@@ -44,9 +44,9 @@ const buildCampaign = (obj) => {
     })
   })
 
-  const newCampaign = json2csv({data: campaignFile, fields: fields})
-  fs.writeFileSync(`./public/downloads/${fileName}.csv`, newCampaign)
-  return `/downloads/${fileName}.csv`
+  const newCampaign = json2csv({data: campaignFile, fields: fields, del: '\t'})
+  fs.writeFileSync(`./public/downloads/${fileName}.txt`, newCampaign)
+  return `/downloads/${fileName}.txt`
 }
 
 const getCurrentDate = () => {

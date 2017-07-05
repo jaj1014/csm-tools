@@ -25,10 +25,10 @@ const buildFile = (jsonData, fileName, cb) => {
     })
   })
 
-  const newFile = json2csv({data: data, fields: fields})
-  fs.writeFileSync(`./public/downloads/${fileName}.csv`, newFile)
+  const newFile = json2csv({data: data, fields: fields, del: '\t'})
+  fs.writeFileSync(`./public/downloads/${fileName}.txt`, newFile)
   cb()
-  return `/downloads/${fileName}.csv`
+  return `/downloads/${fileName}.txt`
 }
 
 const buildMatchingData = (jsonData) => {
